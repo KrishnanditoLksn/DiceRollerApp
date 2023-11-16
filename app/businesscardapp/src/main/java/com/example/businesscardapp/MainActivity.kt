@@ -12,7 +12,9 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.AccountBox
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.rounded.Email
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -44,14 +46,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun BusinessCardApp(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
 
 @Composable
 fun UserInformationSection(title: String, subTitle: String) {
@@ -60,7 +54,9 @@ fun UserInformationSection(title: String, subTitle: String) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         val imageResources = painterResource(R.drawable.android_logo)
-        val imageIcon = Icons.Rounded.AccountBox
+        val emailIcon = Icons.Rounded.Email
+        val socialMediaIcon1 = Icons.Filled.Home
+        val schoolIcon2 = Icons.Filled.Person
 
         Image(
             painter = imageResources,
@@ -69,35 +65,72 @@ fun UserInformationSection(title: String, subTitle: String) {
                 .size(90.dp)
                 .background(Color.Green)
         )
+
+        Spacer(modifier = Modifier.size(50.dp))
+
         Row {
             Text(
                 text = title,
+                fontSize = 30.sp
             )
         }
+
+        Spacer(modifier = Modifier.size(30.dp))
 
         Column {
             Text(
                 text = subTitle,
-                fontSize = 10.sp
+                fontSize = 15.sp
             )
         }
-        Spacer(modifier = Modifier.size(35.dp))
+        Spacer(modifier = Modifier.size(150.dp))
 
-        Row(
-            modifier = Modifier,
-            horizontalArrangement = Arrangement.SpaceEvenly
-        ) {
-            Icon(
-                imageIcon,
-                contentDescription = null // decorative element
-            )
 
-            Text(
-                text = "calling ...."
-            )
+        Column {
+            Row {
+                Icon(
+                    emailIcon,
+                    contentDescription = null // decorative element
+                )
+                Spacer(modifier = Modifier.size(10.dp))
+
+                Text(
+                    text = "krishnandito@gmail.com"
+                )
+            }
+
+            Spacer(modifier = Modifier.size(10.dp))
+
+            Row {
+                Icon(
+                    socialMediaIcon1,
+                    contentDescription = null
+                )
+
+                Spacer(modifier = Modifier.size(10.dp))
+
+                Text(
+                    text = "Sragen , Central Java , Indonesia"
+                )
+            }
+
+            Spacer(modifier = Modifier.size(10.dp))
+
+            Row {
+                Icon(
+                    schoolIcon2,
+                    contentDescription = null
+                )
+
+                Spacer(modifier = Modifier.size(10.dp))
+
+
+                Text(
+                    text = "Universitas Sanata Dharma"
+                )
+            }
         }
     }
-
 }
 
 @Preview(showBackground = true)
@@ -106,7 +139,7 @@ fun BusinessCardAppPreview() {
     JetpackArticleTheme {
         UserInformationSection(
             title = "Emmanuel Krishnandito ",
-            subTitle = "Undergraduate Informatics Student at Sanata Dharma University"
+            subTitle = "Informatics Student at Sanata Dharma University"
         )
     }
 }
