@@ -15,7 +15,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.rounded.Email
-import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -25,6 +24,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -52,7 +53,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun UserInformationSection(title: String, subTitle: String) {
     Column(
-        modifier = Modifier.background(Color.Green),
+        modifier = Modifier.background(color = Color.Green),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -61,6 +62,8 @@ fun UserInformationSection(title: String, subTitle: String) {
         val socialMediaIcon1 = Icons.Filled.Home
         val schoolIcon2 = Icons.Filled.Person
 
+        Spacer(modifier = Modifier.size(100.dp))
+
         Image(
             painter = imageResources,
             contentDescription = "Ini logo android ",
@@ -68,40 +71,38 @@ fun UserInformationSection(title: String, subTitle: String) {
                 .size(90.dp)
                 .background(Color.Green)
         )
-
-        Spacer(modifier = Modifier.size(50.dp))
-
         Row {
             Text(
                 text = title,
                 fontSize = 30.sp
             )
         }
-
-        Spacer(modifier = Modifier.size(30.dp))
-
         Column {
             Text(
                 text = subTitle,
-                fontSize = 15.sp
+                fontSize = 15.sp,
+                fontFamily = FontFamily.Monospace,
+                textAlign = TextAlign.Center
             )
         }
-        Spacer(modifier = Modifier.size(150.dp))
+        Spacer(modifier = Modifier.size(100.dp))
 
 
         Column {
             Row {
-                Button(
-                    modifier = Modifier.size(25.dp),
-                    onClick = {
-                        /*TODO*/
-
-                    }) {
-
-                }
+//                Button(
+//                    modifier = Modifier.size(25.dp),
+//                    onClick = {
+//                        /*TODO*/
+//
+//                    }) {
+//
+//                }
                 Icon(
                     emailIcon,
-                    contentDescription = null // decorative element
+                    contentDescription = null, // decorative element
+                    tint = Color.DarkGray
+
 
                 )
                 Spacer(modifier = Modifier.size(10.dp))
@@ -116,7 +117,8 @@ fun UserInformationSection(title: String, subTitle: String) {
             Row {
                 Icon(
                     socialMediaIcon1,
-                    contentDescription = null
+                    contentDescription = null,
+                    tint = Color.DarkGray
                 )
 
                 Spacer(modifier = Modifier.size(10.dp))
@@ -131,7 +133,8 @@ fun UserInformationSection(title: String, subTitle: String) {
             Row {
                 Icon(
                     schoolIcon2,
-                    contentDescription = null
+                    contentDescription = null,
+                    tint = Color.DarkGray
                 )
 
                 Spacer(modifier = Modifier.size(10.dp))
@@ -150,7 +153,7 @@ fun UserInformationSection(title: String, subTitle: String) {
 fun BusinessCardAppPreview() {
     JetpackArticleTheme {
         UserInformationSection(
-            title = "Emmanuel Krishnandito ",
+            title = "Emmanuel Krishnandito",
             subTitle = "Informatics Student at Sanata Dharma University"
         )
     }
