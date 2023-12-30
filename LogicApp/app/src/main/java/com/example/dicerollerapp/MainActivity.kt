@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -63,7 +65,7 @@ fun DiceAppBar() {
                 text = "Aplikasi dadu ",
                 textAlign = TextAlign.Center,
             )
-        },
+        }
     )
 }
 
@@ -89,10 +91,39 @@ fun DiceWithButtonAndImage(
     ) {
         Image(painter = painterResource(id = imageResource), contentDescription = result.toString())
         Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = {
-            result = (1..6).random()
-        }) {
-            Text(stringResource(R.string.roll))
+
+
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
+            Button(onClick = {
+                result++
+                if (result == 6) {
+                    result = 1
+                }
+            }) {
+                Text(stringResource(R.string.roll1))
+            }
+
+            Spacer(modifier = Modifier.height(20.dp))
+            Column(
+                verticalArrangement = Arrangement.Center
+            ) {
+                Button(onClick = {
+                    result--
+                    if (result == 6) {
+                        result = 1
+                    }
+                }) {
+                    Text(text = stringResource(R.string.roll2))
+                }
+
+                Button(onClick = {
+                    result = 6
+                }) {
+                    Text(text = stringResource(R.string.reset))
+                }
+            }
         }
     }
 }
